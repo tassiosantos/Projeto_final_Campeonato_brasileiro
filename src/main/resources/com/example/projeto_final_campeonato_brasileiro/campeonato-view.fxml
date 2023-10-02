@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="280.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projeto_final_campeonato_brasileiro.CampeonatoAnalizerController">
+
+    <ChoiceBox fx:id="itemParaAnalisar" layoutX="41.0" layoutY="142.0" prefHeight="25.0" prefWidth="305.0" />
+
+
+    <Label fx:id="welcomeText" layoutX="108.0" layoutY="26.0" prefHeight="50.0" prefWidth="170.0" text="Escolha a opção para análise." />
+    <Button centerShape="false" layoutX="164.0" layoutY="222.0" onAction="#onHelloButtonClick" text="Analisar" />
+
+
+</AnchorPane>
