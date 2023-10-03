@@ -12,7 +12,7 @@ public class CampeonatoApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CampeonatoApplication.class.getResource("campeonato-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 280);
-        stage.setTitle("Hello!");
+        stage.setTitle("Campeonato Analizer 2003 - 2022.");
         stage.setScene(scene);
         stage.show();
     }

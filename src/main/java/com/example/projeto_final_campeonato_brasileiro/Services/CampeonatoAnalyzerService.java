@@ -6,9 +6,9 @@ import com.example.projeto_final_campeonato_brasileiro.Entities.Gol;
 import com.example.projeto_final_campeonato_brasileiro.Entities.Jogo;
 import com.example.projeto_final_campeonato_brasileiro.Repositories.CampeonatoAnalyzerRepository;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class CampeonatoAnalyzerService {
@@ -23,7 +23,7 @@ public class CampeonatoAnalyzerService {
         campeonatoAnalyzerRepository = new CampeonatoAnalyzerRepository();
     }
 
-    public static List<Map.Entry<String, Long>> getTimeMaisVenceu(int ano){
+    public List<Map.Entry<String, Long>> getTimeMaisVenceu(int ano){
 
         List<Jogo> jogos = campeonatoAnalyzerRepository.get().getListaJogos();
 
@@ -47,7 +47,7 @@ public class CampeonatoAnalyzerService {
         return timesMaisVitorias;
     }
 
-    public static List<Map.Entry<String,Long>> getEstadoMenosJogos(){
+    public List<Map.Entry<String,Long>> getEstadoMenosJogos(){
         List<Jogo> jogos = campeonatoAnalyzerRepository.get().getListaJogos();
         Map<String, Long> listaMandos = jogos.stream()
                 .collect(Collectors.groupingBy(Jogo::getMandante,Collectors.counting()));
@@ -69,7 +69,7 @@ public class CampeonatoAnalyzerService {
     }
 
 
-    public static List<Map.Entry<String, Long>> getJogadorMaisGols(){
+    public List<Map.Entry<String, Long>> getJogadorMaisGols(){
         List<Gol> golsFeitos = campeonatoAnalyzerRepository.get().getListaGols();
 
         Map<String, Long> listaGolsJogadores = golsFeitos.stream()
@@ -90,7 +90,7 @@ public class CampeonatoAnalyzerService {
     }
 
 
-    public static List<Map.Entry<String, Long>> getJogadorMaisGolsPenalts(){
+    public List<Map.Entry<String, Long>> getJogadorMaisGolsPenalts(){
         List<Gol> golsFeitos = campeonatoAnalyzerRepository.get().getListaGols();
 
         Map<String, Long> listaGolsPenalty = golsFeitos.stream()
@@ -112,7 +112,7 @@ public class CampeonatoAnalyzerService {
         return jogadoresMaisGolsPenalty;
     }
 
-    public static List<Map.Entry<String, Long>> getJogadorMaisGolsContra(){
+    public List<Map.Entry<String, Long>> getJogadorMaisGolsContra(){
         List<Gol> golsFeitos = campeonatoAnalyzerRepository.get().getListaGols();
 
         Map<String, Long> listaGolsContra = golsFeitos.stream()
@@ -132,7 +132,7 @@ public class CampeonatoAnalyzerService {
         return jogadoresMaisGolsContra;
     }
 
-    public static  List<Map.Entry<String, Long>> getJogadorMaisAmarelos(){
+    public List<Map.Entry<String, Long>> getJogadorMaisAmarelos(){
         List<Cartao> cartoesTotais = campeonatoAnalyzerRepository.get().getListaCartoes();
 
         Map<String, Long> cartoesJogador = cartoesTotais.stream()
@@ -152,7 +152,7 @@ public class CampeonatoAnalyzerService {
     }
 
 
-    public static List<Map.Entry<String, Long>> getJogadorMaisVermelhos(){
+    public List<Map.Entry<String, Long>> getJogadorMaisVermelhos(){
         List<Cartao> cartoesTotais = campeonatoAnalyzerRepository.get().getListaCartoes();
 
         Map<String, Long> cartoesJogador = cartoesTotais.stream()
@@ -172,15 +172,29 @@ public class CampeonatoAnalyzerService {
     }
 
 
-    public String getPlacarPartidaMaisGols(){
+    public List<Map.Entry<String, String>> getPlacarPartidaMaisGols(){
+        List<Jogo> jogos = campeonatoAnalyzerRepository.get().getListaJogos();
 
-        return null;
-    }
+        int maxGols = jogos.stream()
+                .mapToInt(jogo -> jogo.getMandantePlacar() + jogo.getVisitantePlacar())
+                .max()
+                .orElse(0);
 
 
-    public static void main(String[] args) {
-        CampeonatoAnalyzerService campeonatoAnalyzerService = new CampeonatoAnalyzerService();
-        System.out.println(getJogadorMaisGolsPenalts());
+        List<Jogo> jogosComMaisGols = jogos.stream()
+                .filter(jogo -> jogo.getMandantePlacar() + jogo.getVisitantePlacar() == maxGols)
+                .collect(Collectors.toList());
+
+
+        List<Map.Entry<String, String>> listaFinal = jogosComMaisGols.stream()
+                .map(jogo -> new AbstractMap.SimpleEntry<>(
+//                        jogo.getMandante() + " x " + jogo.getVisitante(),
+                        jogo.getMandante() + " " + jogo.getMandantePlacar() + " x " + jogo.getVisitante() + " " + jogo.getVisitantePlacar(),
+                        jogo.getMandantePlacar() + " x " + jogo.getVisitantePlacar()
+                ))
+                .collect(Collectors.toList());
+
+        return listaFinal;
     }
 
 

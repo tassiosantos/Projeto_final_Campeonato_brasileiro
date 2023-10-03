@@ -1,7 +1,6 @@
 package com.example.projeto_final_campeonato_brasileiro.Repositories;
 
 import com.example.projeto_final_campeonato_brasileiro.Entities.*;
-import com.example.projeto_final_campeonato_brasileiro.Services.CampeonatoAnalyzerService;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
