@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bde9023c-1afa-44d3-a162-39883c8cff20" name="Changes" comment="Cria parte inicial">
+    <list default="true" id="bde9023c-1afa-44d3-a162-39883c8cff20" name="Changes" comment="Interface Finalizada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/projeto_final_campeonato_brasileiro/CampeonatoAnalizerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/projeto_final_campeonato_brasileiro/CampeonatoAnalizerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/projeto_final_campeonato_brasileiro/CampeonatoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/projeto_final_campeonato_brasileiro/CampeonatoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/projeto_final_campeonato_brasileiro/Repositories/CampeonatoAnalyzerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/projeto_final_campeonato_brasileiro/Repositories/CampeonatoAnalyzerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/projeto_final_campeonato_brasileiro/Services/CampeonatoAnalyzerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/projeto_final_campeonato_brasileiro/Services/CampeonatoAnalyzerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/projeto_final_campeonato_brasileiro/campeonato-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/projeto_final_campeonato_brasileiro/campeonato-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +75,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696219253184</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Interface Finalizada">
+      <option name="closed" value="true" />
+      <created>1696296509774</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696296509774</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -86,6 +91,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Cria parte inicial" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cria parte inicial" />
+    <MESSAGE value="Interface Finalizada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Interface Finalizada" />
   </component>
 </project>

@@ -86,30 +86,27 @@ public class CampeonatoAnalizerController implements Initializable {
             case(5):
                 c1.setText("Jogador");
                 c2.setText("Amarelos");
-                setDataFormat(data, campeonatoAnalyzerService.getJogadorMaisAmarelos());
+                setDataFormat(data, campeonatoAnalyzerService.getJogadorMaisCartao("Amarelo"));
                 setCellString(c1);
                 setCellLong(c2);
                 break;
             case(6):
                 c1.setText("Jogador");
                 c2.setText("Vermelhos");
-                setDataFormat(data, campeonatoAnalyzerService.getJogadorMaisVermelhos());
+                setDataFormat(data, campeonatoAnalyzerService.getJogadorMaisCartao("Vermelho"));
                 setCellString(c1);
                 setCellLong(c2);
                 break;
             case(7):
                 c1.setText("Partida");
-                c2.setText("Placar");
-                setDataFormatString(dataString, campeonatoAnalyzerService.getPlacarPartidaMaisGols());
+                c2.setText("Ano");
+                setDataFormat(data, campeonatoAnalyzerService.getPlacarPartidaMaisGols());
                 setCellString(c1);
-                setCellStringValue(c2);
+                setCellLong(c2);
                 break;
         }
-        if(opcao != 7 ){
+
             tabela.setItems(data);
-        }else{
-            tabela.setItems(dataString);
-        }
 
 
        }
@@ -139,11 +136,6 @@ public class CampeonatoAnalizerController implements Initializable {
         }
     }
 
-    private void setDataFormatString(ObservableList<Map.Entry<String, String>> data, List<Map.Entry<String, String>> lista){
-        for (Map.Entry<String, String> entry : lista) {
-            data.add(entry);
-        }
-    }
 
     private void setCellString(TableColumn cell){
         try{
@@ -151,19 +143,6 @@ public class CampeonatoAnalizerController implements Initializable {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, Long>, String> param) {
                     return new SimpleStringProperty(param.getValue().getKey());
-                }
-            });
-        }catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void setCellStringValue(TableColumn cell){
-        try{
-            cell.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, String>, String>, SimpleStringProperty>() {
-                @Override
-                public SimpleStringProperty call(TableColumn.CellDataFeatures<Map.Entry<String, String>, String> param) {
-                    return new SimpleStringProperty(param.getValue().getValue());
                 }
             });
         }catch (Exception e) {
